@@ -4,7 +4,7 @@
 
 1. Clone the project
 2. Copy `.env.exmaple` to `.env`
-3. Go to: `url/api/shipping/calculate-gross-price` to try get gross price
+3. Go to: `{url}/api/shipping/calculate-gross-price` to try get gross price
 4. Run test: `php artisan test`
 
 **Note:**
