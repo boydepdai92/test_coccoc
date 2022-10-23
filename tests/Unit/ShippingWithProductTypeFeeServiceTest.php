@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
 use App\Services\Fee\FeeByDimension;
 use App\Services\Fee\FeeByProductType;
