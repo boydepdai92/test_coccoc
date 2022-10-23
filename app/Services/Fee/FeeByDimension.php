@@ -2,7 +2,9 @@
 
 namespace App\Services\Fee;
 
-class FeeByDimension implements FeeInterface
+use App\Services\Fee\Contracts\FeeByDimensionInterface;
+
+class FeeByDimension implements FeeByDimensionInterface
 {
     public function calculate(array $params)
     {

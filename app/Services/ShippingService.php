@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Http\Requests\CalculateGrossPriceShippingRequest;
+use App\Services\Contracts\ShippingFeeServiceInterface;
+use App\Services\Contracts\ShippingServiceInterface;
 
 class ShippingService implements ShippingServiceInterface
 {

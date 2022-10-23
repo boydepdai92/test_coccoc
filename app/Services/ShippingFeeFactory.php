@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Services\Contracts\ShippingFeeServiceInterface;
+
 class ShippingFeeFactory
 {
     const TYPE_DEFAULT = 'default';

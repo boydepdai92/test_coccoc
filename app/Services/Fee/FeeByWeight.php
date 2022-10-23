@@ -2,7 +2,9 @@
 
 namespace App\Services\Fee;
 
-class FeeByWeight implements FeeInterface
+use App\Services\Fee\Contracts\FeeByWeightInterface;
+
+class FeeByWeight implements FeeByWeightInterface
 {
     public function calculate(array $params)
     {

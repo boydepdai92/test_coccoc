@@ -2,15 +2,16 @@
 
 namespace App\Services;
 
-use App\Services\Fee\FeeByDimension;
-use App\Services\Fee\FeeByWeight;
+use App\Services\Contracts\ShippingFeeServiceInterface;
+use App\Services\Fee\Contracts\FeeByDimensionInterface;
+use App\Services\Fee\Contracts\FeeByWeightInterface;
 
 class ShippingFeeService implements ShippingFeeServiceInterface
 {
     protected $feeByWeight;
     protected $feeByDimension;
 
-    public function __construct(FeeByWeight $feeByWeight, FeeByDimension $feeByDimension)
+    public function __construct(FeeByWeightInterface $feeByWeight, FeeByDimensionInterface $feeByDimension)
     {
         $this->feeByDimension = $feeByDimension;
         $this->feeByWeight = $feeByWeight;
