@@ -3,7 +3,10 @@
 namespace Tests\Unit;
 
 use App\Http\Requests\CalculateGrossPriceShippingRequest;
-use App\Services\ShippingFeeFactory;
+use App\Services\Fee\FeeByDimension;
+use App\Services\Fee\FeeByProductType;
+use App\Services\Fee\FeeByWeight;
+use App\Services\ShippingFeeService;
 use App\Services\ShippingService;
 use Tests\TestCase;
 
@@ -23,7 +26,7 @@ class ShippingServiceTest extends TestCase
             ]
         ]);
 
-        $shippingService = new ShippingService(new ShippingFeeFactory());
+        $shippingService = new ShippingService(new ShippingFeeService(new FeeByWeight(), new FeeByDimension(), new FeeByProductType()));
 
         $expected = 274;
 
@@ -44,11 +47,9 @@ class ShippingServiceTest extends TestCase
             ]
         ]);
 
-        $options = [
-            'isUseProductType' => true,
-        ];
+        $options = ['isUseProductType' => true];
 
-        $shippingService = new ShippingService(new ShippingFeeFactory());
+        $shippingService = new ShippingService(new ShippingFeeService(new FeeByWeight(), new FeeByDimension(), new FeeByProductType()));
 
         $expected = 410;
 

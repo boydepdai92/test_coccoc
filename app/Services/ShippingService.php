@@ -8,11 +8,11 @@ use App\Services\Contracts\ShippingServiceInterface;
 
 class ShippingService implements ShippingServiceInterface
 {
-    protected $shippingFeeFactory;
+    protected $shippingFeeService;
 
-    public function __construct(ShippingFeeFactory $shippingFeeFactory)
+    public function __construct(ShippingFeeServiceInterface $shippingFeeService)
     {
-        $this->shippingFeeFactory = $shippingFeeFactory;
+        $this->shippingFeeService = $shippingFeeService;
     }
 
     public function calculateGrossPrice(CalculateGrossPriceShippingRequest $request, array $options = [])
@@ -31,17 +31,6 @@ class ShippingService implements ShippingServiceInterface
 
     protected function calculateFee(array $item, array $options)
     {
-        $classShippingFee = $this->getClassShippingFree($options);
-
-        return $classShippingFee->calculate($item);
-    }
-
-    protected function getClassShippingFree(array $options): ShippingFeeServiceInterface
-    {
-        if (isset($options['isUseProductType']) && true === $options['isUseProductType']) {
-            return $this->shippingFeeFactory->getShippingFee(ShippingFeeFactory::TYPE_WITH_PRODUCT_TYPE);
-        }
-
-        return $this->shippingFeeFactory->getShippingFee(ShippingFeeFactory::TYPE_DEFAULT);
+        return $this->shippingFeeService->calculate($item, $options);
     }
 }
