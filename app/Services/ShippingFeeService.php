@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Services\Fee\FeeByDimension;
 use App\Services\Fee\FeeByWeight;
-use Illuminate\Support\Facades\Log;
 
 class ShippingFeeService implements ShippingFeeServiceInterface
 {
